@@ -6,6 +6,7 @@
   "keywords": [],
   "dependencies": {
     "async": "2.0.1",
+    "bcrypt": "^1.0.3",
     "lodash": "3.10.1",
     "sails": "^1.0.0-45",
     "sails-hook-orm": "^2.0.0-16",
@@ -13,9 +14,11 @@
     "sails-postgresql": "^1.0.0-12"
   },
   "devDependencies": {
-    "eslint": "4.11.0"
+    "eslint": "4.11.0",
+    "nodemon": "^1.14.11"
   },
   "scripts": {
+    "dev": "sails_custom__adminEmail=admin@yogya.com sails_custom__adminName=admin sails_custom__adminPassword=123456 node ./node_modules/.bin/nodemon app.js",
     "start": "NODE_ENV=production node app.js",
     "test": "npm run lint && npm run custom-tests && echo 'Done.'",
     "lint": "node ./node_modules/eslint/bin/eslint . --max-warnings=0 --report-unused-disable-directives && echo '✔  Your code looks good.'",

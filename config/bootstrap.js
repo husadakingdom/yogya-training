@@ -27,6 +27,21 @@ module.exports.bootstrap = async function(done) {
   // ]);
   // ```
 
+  if (await User.count({ role: 'Admin' }) > 0) {
+    return done();
+  }
+
+  const adminPassword = await sails.helpers.encryptText.with({
+    plainText: sails.config.custom.adminPassword
+  });
+
+  await User.create({
+    email: sails.config.custom.adminEmail,
+    name: sails.config.custom.adminName,
+    password: adminPassword,
+    role: 'Admin'
+  });
+
   // Don't forget to trigger `done()` when this bootstrap function's logic is finished.
   // (otherwise your server will never lift, since it's waiting on the bootstrap)
   return done();
