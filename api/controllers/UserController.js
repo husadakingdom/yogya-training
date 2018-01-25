@@ -62,7 +62,7 @@ module.exports = {
         return res.apiError(400, sails.config.custom.errorMessage.user.notFound);
       }
 
-      return res.apiSuccess(user);
+      return res.apiSuccess({ user });
     } catch (err) {
       return res.apiError(500, err);
     }
