@@ -40,6 +40,10 @@ module.exports.custom = {
 
     store: {
       notFound: 'Store not found',
+    },
+
+    category: {
+      notFound: 'Category not found',
     }
   }
 
