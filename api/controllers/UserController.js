@@ -66,6 +66,35 @@ module.exports = {
     } catch (err) {
       return res.apiError(500, err);
     }
+  },
+
+  update: async(req, res) => {
+    try {
+      if (req.user.role !== 'Admin' && req.user.id !== parseInt(req.params.id, 10)) {
+        return res.apiError(403, sails.config.custom.errorMessage.user.notAllowed);
+      }
+
+      // whitelist allowed params
+      const params = {
+        name: req.param('name'),
+        email: req.param('email')
+      };
+
+      if (req.param('password')) {
+        const password = await sails.helpers.encryptText.with({
+          plainText: req.param('password')
+        });
+        params.password = password;
+      }
+
+      const users = await User.update({ id: req.params.id }, params).fetch();
+      const user = users[0];
+      delete user.accessToken;
+
+      return res.apiSuccess({ user });
+    } catch (err) {
+      return res.apiError(500, err);
+    }
   }
 };
 

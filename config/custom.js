@@ -34,7 +34,8 @@ module.exports.custom = {
     },
 
     user: {
-      notFound: 'User not found'
+      notFound: 'User not found',
+      notAllowed: 'You are not allowed to change other user data'
     }
   }
 
