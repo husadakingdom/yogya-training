@@ -33,7 +33,13 @@ module.exports.routes = {
   'GET /api/v1/users': 'UserController.index',
   'GET /api/v1/user/:id': 'UserController.view',
   'PATCH /api/v1/user/:id': 'UserController.update',
-  'DELETE /api/v1/user/:id': 'UserController.delete'
+  'DELETE /api/v1/user/:id': 'UserController.delete',
+
+  'POST /api/v1/store': 'StoreController.create',
+  'GET /api/v1/stores': 'StoreController.index',
+  'GET /api/v1/store/:id': 'StoreController.view',
+  'PATCH /api/v1/store/:id': 'StoreController.update',
+  'DELETE /api/v1/store/:id': 'StoreController.delete',
 
 
   //  ╦ ╦╔═╗╔╗ ╦ ╦╔═╗╔═╗╦╔═╔═╗

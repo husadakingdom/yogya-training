@@ -36,6 +36,10 @@ module.exports.custom = {
     user: {
       notFound: 'User not found',
       notAllowed: 'You are not allowed to change other user data'
+    },
+
+    store: {
+      notFound: 'Store not found',
     }
   }
 
