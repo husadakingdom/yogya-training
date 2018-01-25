@@ -5,7 +5,7 @@
  * @help        :: See http://sailsjs.org/#!/documentation/concepts/Controllers
  */
 
-module.exports = {	
+module.exports = {
   create: async(req, res) => {
     try {
       const params = req.allParams();
