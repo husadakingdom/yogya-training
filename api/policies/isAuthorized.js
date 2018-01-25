@@ -11,7 +11,7 @@ module.exports = async (req, res, next) => {
 
       const decrypted = await sails.helpers.auth.authenticateToken(accessToken);
 
-      const user = await User.findOne(decrypted.userId);
+      const user = await User.findOne({ id: decrypted.userId, accessToken });
       if (!user) {
         return res.set(401).json({ error: errMsg.userNotFound });
       }
