@@ -16,6 +16,7 @@
     "uuid": "^3.2.1"
   },
   "devDependencies": {
+    "apidoc": "^0.17.6",
     "eslint": "4.11.0",
     "nodemon": "^1.14.11"
   },
@@ -24,7 +25,8 @@
     "start": "NODE_ENV=production node app.js",
     "test": "npm run lint && npm run custom-tests && echo 'Done.'",
     "lint": "node ./node_modules/eslint/bin/eslint . --max-warnings=0 --report-unused-disable-directives && echo '✔  Your code looks good.'",
-    "custom-tests": "echo \"(No other custom tests yet.)\" && echo"
+    "custom-tests": "echo \"(No other custom tests yet.)\" && echo",
+    "apidoc": "apidoc -i api/controllers -o doc/"
   },
   "main": "app.js",
   "repository": {

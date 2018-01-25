@@ -1,0 +1,1 @@
+define({  "name": "Yogya API Server",  "version": "0.0.0",  "description": "Yogya API server doc",  "apidoc": "0.3.0",  "sampleUrl": false,  "defaultVersion": "0.0.0",  "generator": {    "name": "apidoc",    "time": "2018-01-25T10:37:41.532Z",    "url": "http://apidocjs.com",    "version": "0.17.6"  }});

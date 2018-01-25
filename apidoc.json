@@ -1,0 +1,8 @@
+{
+  "name": "Yogya API Server",
+  "description": "Yogya API server doc",
+  "apidoc": {
+    "title": "Yogya API server doc",
+    "url" : "https://localhost:1337/"
+  }
+}

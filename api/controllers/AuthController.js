@@ -6,6 +6,23 @@
  */
 
 module.exports = {
+  /**
+  * @api {post} /api/v1/auth/login User sign in
+  * @apiName Login
+  * @apiGroup Authentication
+  * @apiDescription API to be accessed when user sign in
+  * It will return JWT that can be used for subsequent API call.
+  *
+  * @apiParam {String} email User email.
+  * @apiParam {String} password User password.
+  *
+  * @apiSuccess {Object} user The user logging in.
+  * @apiSuccess {Number} user.id User ID.
+  * @apiSuccess {String} user.email User email.
+  * @apiSuccess {String} user.name User name.
+  * @apiSuccess {String} user.role User role (Admin or Customer).
+  * @apiSuccess {String} user.accessToken JSON Web Token for subsequent API call.
+  */
   login: async (req, res) => {
     const errMsg = sails.config.custom.errorMessage.auth;
 
@@ -28,6 +45,15 @@ module.exports = {
     }
   },
 
+  /**
+  * @api {post} /api/v1/auth/logout Logout user
+  * @apiName Logout
+  * @apiGroup Authentication
+  * @apiPermission  authorizedUser
+  * @apiDescription API to logout user.
+  *
+  * @apiSuccess {String} message A message with text `Logout success` if log out is OK.
+  */
   logout: async(req, res) => {
     try {
       await User.update(req.user.id).set({ accessToken: null });
