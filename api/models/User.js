@@ -14,6 +14,7 @@ module.exports = {
     //  ╩  ╩╚═╩╩ ╩╩ ╩ ╩ ╚╝ ╚═╝╚═╝
     email: {
       type: 'string',
+      isEmail: true,
       required: true,
       unique: true
     },
@@ -46,5 +47,9 @@ module.exports = {
     //  ╩ ╩╚═╝╚═╝╚═╝╚═╝╩╩ ╩ ╩ ╩╚═╝╝╚╝╚═╝
 
   },
+
+  customToJSON: function() { // careful, can't use arrow function here
+    return _.omit(this, ['createdAt','updatedAt','password']);
+  }
 };
 

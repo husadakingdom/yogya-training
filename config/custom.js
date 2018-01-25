@@ -20,4 +20,11 @@ module.exports.custom = {
   // stripeSecret: 'sk_test_Zzd814nldl91104qor5911gjald',
   // …
 
+  errorMessage: {
+    auth: {
+      userNotFound: 'User not found',
+      invalidPassword: 'Invalid password'
+    }
+  }
+
 };
