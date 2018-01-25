@@ -52,6 +52,20 @@ module.exports = {
     } catch (err) {
       return res.apiError(500, err);
     }
+  },
+
+  view: async(req, res) => {
+    try {
+      const user = await User.findOne(req.params.id);
+
+      if (!user) {
+        return res.apiError(400, sails.config.custom.errorMessage.user.notFound);
+      }
+
+      return res.apiSuccess(user);
+    } catch (err) {
+      return res.apiError(500, err);
+    }
   }
 };
 

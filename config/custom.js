@@ -31,6 +31,10 @@ module.exports.custom = {
       noHeader: 'No authorization header was found',
       headerFormat: 'No authorization header was found',
       notAdmin: 'You don\'t have enough privilege for this action'
+    },
+
+    user: {
+      notFound: 'User not found'
     }
   }
 
