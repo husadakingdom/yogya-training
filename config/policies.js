@@ -21,6 +21,7 @@ module.exports.policies = {
   'auth/login': 'requestLog',
   'auth/logout': ['requestLog', 'isAuthorized'],
 
-  'user/*': ['requestLog', 'isAuthorized', 'isAdmin'],
-  'user/update': ['requestLog', 'isAuthorized']
+  'user/*': ['requestLog', 'isAuthorized'],
+  'user/create': ['requestLog', 'isAuthorized', 'isAdmin'],
+  'user/delete': ['requestLog', 'isAuthorized', 'isAdmin']
 };
