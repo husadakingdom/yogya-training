@@ -95,6 +95,21 @@ module.exports = {
     } catch (err) {
       return res.apiError(500, err);
     }
+  },
+
+  delete: async(req, res) => {
+    try {
+      const user = await User.findOne(req.params.id);
+      if (!user) {
+        return res.apiError(400, sails.config.custom.errorMessage.user.notFound);
+      }
+
+      await User.destroy(req.params.id);
+
+      return res.apiSuccess({ message: 'User deleted' });
+    } catch (err) {
+      return res.apiError(500, err);
+    }
   }
 };
 

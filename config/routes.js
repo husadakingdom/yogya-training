@@ -33,6 +33,7 @@ module.exports.routes = {
   'GET /api/v1/users': 'UserController.index',
   'GET /api/v1/user/:id': 'UserController.view',
   'PATCH /api/v1/user/:id': 'UserController.update',
+  'DELETE /api/v1/user/:id': 'UserController.delete'
 
 
   //  ╦ ╦╔═╗╔╗ ╦ ╦╔═╗╔═╗╦╔═╔═╗
