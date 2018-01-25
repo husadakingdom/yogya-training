@@ -29,7 +29,8 @@ module.exports.custom = {
       userNotFound: 'User not found',
       invalidPassword: 'Invalid password',
       noHeader: 'No authorization header was found',
-      headerFormat: 'No authorization header was found'
+      headerFormat: 'No authorization header was found',
+      notAdmin: 'You don\'t have enough privilege for this action'
     }
   }
 
