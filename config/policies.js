@@ -19,6 +19,7 @@ module.exports.policies = {
 
   '*': false,
   'auth/login': 'requestLog',
-  'auth/logout': ['requestLog', 'isAuthorized']
+  'auth/logout': ['requestLog', 'isAuthorized'],
 
+  'user/*': ['requestLog', 'isAuthorized', 'isAdmin']
 };
