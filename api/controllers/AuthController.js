@@ -7,19 +7,24 @@
 
 module.exports = {
   login: async (req, res) => {
+    const errMsg = sails.config.custom.errorMessage.auth;
+
     try {
       const params = req.allParams();
-      const errMsg = sails.config.custom.errorMessage.auth;
 
-      let user = await sails.helpers.auth.validateLogin(params.email, params.password)
-      .intercept('userNotFound', () => new Error(errMsg.userNotFound))
-      .intercept('invalidPassword', () => new Error(errMsg.invalidPassword));
+      let user = await sails.helpers.auth.validateLogin(params.email, params.password);
 
       user = await sails.helpers.auth.generateToken(user);
 
-      res.json({ user });
+      res.apiSuccess({ user });
     } catch (err) {
-      res.status(500).json({ error: err.message });
+      if (err.exit === 'userNotFound') {
+        res.apiError(401, errMsg.userNotFound);
+      } else if (err.exit ==='invalidPassword') {
+        res.apiError(401, errMsg.invalidPassword);      
+      } else {
+        res.apiError(500, err);
+      }
     }
   },
 
@@ -27,9 +32,9 @@ module.exports = {
     try {
       await User.update(req.user.id).set({ accessToken: null });
 
-      res.json({ message: 'Logout success' });
+      res.apiSuccess({ message: 'Logout success' });
     } catch (err) {
-      res.status(500).json({ error: err.message });
+      res.apiError(500, err);
     }
   }
 };

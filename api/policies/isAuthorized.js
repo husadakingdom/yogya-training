@@ -6,27 +6,27 @@ module.exports = async (req, res, next) => {
       const accessToken = req.headers.authorization.split('Bearer ')[1];
 
       if (!accessToken) {
-        return res.set(401).json({ error: errMsg.headerFormat });
+        return res.apiError(401, errMsg.headerFormat);
       }
 
       const decrypted = await sails.helpers.auth.authenticateToken(accessToken);
 
       const user = await User.findOne({ id: decrypted.userId, accessToken });
       if (!user) {
-        return res.set(401).json({ error: errMsg.userNotFound });
+        return res.apiError(401, errMsg.userNotFound);
       }
 
       req.user = user;
 
       return next();
     } else {
-      return res.set(401).json({ error: errMsg.noHeader });
+      return res.apiError(401, errMsg.noHeader);
     }
   } catch (err) {
     if (err.exit === 'expiredToken') {
-      return res.set(401).json({ error: errMsg.expiredToken });
+      return res.apiError(401, errMsg.expiredToken);
     }
 
-    return res.set(500).json({ error: err.message });
+    return res.apiError(500, err);
   }
 };

@@ -16,7 +16,7 @@ module.exports = {
     userNotFound: {
       description: 'User not found'
     },
-    wrongPassword: {
+    invalidPassword: {
       description: 'Invalid password'
     }
   },
@@ -31,7 +31,7 @@ module.exports = {
     }
 
     if (!bcrypt.compareSync(inputs.password, user.password)) {
-      throw 'wrongPassword';
+      throw 'invalidPassword';
     }
 
     return exits.success(user);
