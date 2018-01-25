@@ -19,11 +19,17 @@ module.exports.custom = {
   // mailgunSecret: 'key-testkeyb183848139913858e8abd9a3',
   // stripeSecret: 'sk_test_Zzd814nldl91104qor5911gjald',
   // …
+  token: {
+    secret: 'Y0gy@',
+    expires: 86400 // 1 day
+  },
 
   errorMessage: {
     auth: {
       userNotFound: 'User not found',
-      invalidPassword: 'Invalid password'
+      invalidPassword: 'Invalid password',
+      noHeader: 'No authorization header was found',
+      headerFormat: 'No authorization header was found'
     }
   }
 

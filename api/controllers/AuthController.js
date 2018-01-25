@@ -25,19 +25,7 @@ module.exports = {
 
   logout: async(req, res) => {
     try {
-      const accessToken = req.headers['authorization'] ?
-        req.headers['authorization'].split('Bearer ')[1] : undefined;
-
-      if (!accessToken) {
-        throw new Error('Token not found');
-      }
-
-      const user = await User.findOne({ accessToken });
-      if (!user) {
-        throw new Error('Token not found');
-      }
-
-      await User.update(user.id).set({ accessToken: null });
+      await User.update(req.user.id).set({ accessToken: null });
 
       res.json({ message: 'Logout success' });
     } catch (err) {
