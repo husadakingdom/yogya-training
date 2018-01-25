@@ -29,7 +29,8 @@ module.exports.routes = {
   'POST /api/v1/auth/login': 'AuthController.login',
   'POST /api/v1/auth/logout': 'AuthController.logout',
 
-  'POST /api/v1/user': 'UserController.create'
+  'POST /api/v1/user': 'UserController.create',
+  'GET /api/v1/users': 'UserController.index'
 
 
 
