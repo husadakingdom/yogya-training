@@ -46,6 +46,7 @@ module.exports.custom = {
 
     category: {
       notFound: 'Category not found',
+      itemExist: 'There are items on this category, delete those first'
     },
 
     item: {

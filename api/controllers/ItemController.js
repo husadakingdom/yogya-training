@@ -10,7 +10,7 @@ module.exports = {
     try {
       const params = req.allParams();
 
-      const category = await Category.findOne(params.categoryId);
+      const category = await Category.findOne(params.category);
       if (!category) {
         return res.apiError(400, errMsg.invalidCategory);
       }
@@ -57,7 +57,8 @@ module.exports = {
         })
         .skip(offset)
         .limit(limit)
-        .sort([sort]);
+        .sort([sort])
+        .populate('category');
 
       return res.apiSuccess({ items });
     } catch (err) {
@@ -67,7 +68,7 @@ module.exports = {
 
   view: async(req, res) => {
     try {
-      const item = await Item.findOne(req.params.id);
+      const item = await Item.findOne(req.params.id).populate('category');
 
       if (!item) {
         return res.apiError(400, sails.config.custom.errorMessage.item.notFound);

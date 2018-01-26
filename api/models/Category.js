@@ -13,6 +13,10 @@ module.exports = {
       required: true,
       unique: true
     },
+    items: {
+      collection: 'Item',
+      via: 'category'
+    }
   },
 
   customToJSON: function() {

@@ -37,7 +37,8 @@ module.exports = {
         })
         .skip(offset)
         .limit(limit)
-        .sort([sort]);
+        .sort([sort])
+        .populate('items');
 
       return res.apiSuccess({ categories });
     } catch (err) {
@@ -47,7 +48,7 @@ module.exports = {
 
   view: async(req, res) => {
     try {
-      const category = await Category.findOne(req.params.id);
+      const category = await Category.findOne(req.params.id).populate('items');
 
       if (!category) {
         return res.apiError(400, sails.config.custom.errorMessage.category.notFound);
@@ -76,6 +77,11 @@ module.exports = {
       const category = await Category.findOne(req.params.id);
       if (!category) {
         return res.apiError(400, sails.config.custom.errorMessage.category.notFound);
+      }
+
+      const items = await Item.find({ category: req.params.id });
+      if (items.length > 0) {
+        return res.apiError(400, sails.config.custom.errorMessage.category.itemExist);
       }
 
       await Category.destroy(req.params.id);
