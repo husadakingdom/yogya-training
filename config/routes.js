@@ -54,6 +54,7 @@ module.exports.routes = {
 
   'POST /api/v1/item': 'ItemController.create',
   'GET /api/v1/items': 'ItemController.index',
+  'GET /api/v1/itemsCategory': 'ItemController.indexCategory',
   'GET /api/v1/item/:id': 'ItemController.view',
   'PATCH /api/v1/item/:id': 'ItemController.update',
 
@@ -61,6 +62,7 @@ module.exports.routes = {
 
   'GET /api/v1/report/:storeId/itemPerStore': 'ReportController.itemPerStore',
   'GET /api/v1/report/:storeId/stockPerStore': 'ReportController.stockPerStore',
+  'GET /api/v1/report/:storeId/mostSoldPerStore': 'ReportController.mostSoldPerStore',
 
   //  ╦ ╦╔═╗╔╗ ╦ ╦╔═╗╔═╗╦╔═╔═╗
   //  ║║║║╣ ╠╩╗╠═╣║ ║║ ║╠╩╗╚═╗

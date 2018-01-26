@@ -66,6 +66,15 @@ module.exports = {
     }
   },
 
+  indexCategory: async (req, res) => {
+    const result = await sails.sendNativeQuery(
+      sails.config.sql.item.searchByCategoryName,
+      [`%${req.param('category')}%`]
+    );
+
+    res.apiSuccess({ result: result.rows });
+  },
+
   view: async(req, res) => {
     try {
       const item = await Item.findOne(req.params.id).populate('category').populate('stores');

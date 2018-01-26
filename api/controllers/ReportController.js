@@ -24,6 +24,16 @@ module.exports = {
     } catch (err) {
       res.apiError(500, err);
     }
+  },
+
+  mostSoldPerStore: async (req, res) => {
+    sails.log(sails.config.sql.item.mostSoldItem);
+    const result = await sails.sendNativeQuery(
+      sails.config.sql.item.mostSoldItem,
+      [req.params.storeId]
+    );
+
+    res.apiSuccess({ result: result.rows[0] });
   }
 };
 
