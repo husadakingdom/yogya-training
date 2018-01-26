@@ -48,6 +48,8 @@ module.exports.routes = {
   'DELETE /api/v1/category/:id': 'CategoryController.delete',
 
   'POST /api/v1/item': 'ItemController.create',
+  'GET /api/v1/items': 'ItemController.index',
+  'GET /api/v1/item/:id': 'ItemController.view',
   'PATCH /api/v1/item/:id': 'ItemController.update',
 
 
