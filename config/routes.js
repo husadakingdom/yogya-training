@@ -57,10 +57,13 @@ module.exports.routes = {
   'GET /api/v1/item/:id': 'ItemController.view',
   'PATCH /api/v1/item/:id': 'ItemController.update',
 
+  'POST /api/v1/transaction/begin': 'TransactionController.begin',
 
   //  ╦ ╦╔═╗╔╗ ╦ ╦╔═╗╔═╗╦╔═╔═╗
   //  ║║║║╣ ╠╩╗╠═╣║ ║║ ║╠╩╗╚═╗
   //  ╚╩╝╚═╝╚═╝╩ ╩╚═╝╚═╝╩ ╩╚═╝
+
+  'POST /api/v1/transaction/:id/complete': 'TransactionController.complete',
 
 
   //  ╔╦╗╦╔═╗╔═╗

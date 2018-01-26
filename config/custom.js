@@ -53,7 +53,13 @@ module.exports.custom = {
       fileNotFound: 'You must upload 1 file',
       invalidCategory: 'The category ID is invalid',
       notFound: 'Item not found'
-    }
+    },
+
+    transaction: {
+      invalidTransaction: 'Invalid transaction',
+      paymentRefRequired: 'Payment reference is required',
+      wrongUser: 'Sorry, this is not your transaction'
+    },
   }
 
 };

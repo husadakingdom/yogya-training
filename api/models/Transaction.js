@@ -10,7 +10,7 @@ module.exports = {
   attributes: {
     paymentRef: {
       type: 'string',
-      required: true,
+      allowNull: true,
       unique: true
     },
     status: {

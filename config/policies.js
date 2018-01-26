@@ -32,5 +32,7 @@ module.exports.policies = {
 
   'item/*': ['requestLog', 'isAuthorized', 'isAdmin'],
   'item/index': 'requestLog',
-  'item/view': 'requestLog'
+  'item/view': 'requestLog',
+
+  'transaction/*': ['requestLog', 'isAuthorized']
 };
