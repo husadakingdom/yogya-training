@@ -68,7 +68,7 @@ module.exports = {
 
   view: async(req, res) => {
     try {
-      const item = await Item.findOne(req.params.id).populate('category');
+      const item = await Item.findOne(req.params.id).populate('category').populate('stores');
 
       if (!item) {
         return res.apiError(400, sails.config.custom.errorMessage.item.notFound);

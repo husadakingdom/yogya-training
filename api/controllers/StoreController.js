@@ -49,7 +49,7 @@ module.exports = {
 
   view: async(req, res) => {
     try {
-      const store = await Store.findOne(req.params.id);
+      const store = await Store.findOne(req.params.id).populate('items');
 
       if (!store) {
         return res.apiError(400, errMsg.notFound);
