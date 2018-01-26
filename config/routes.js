@@ -59,6 +59,9 @@ module.exports.routes = {
 
   'POST /api/v1/transaction/begin': 'TransactionController.begin',
 
+  'GET /api/v1/report/:storeId/itemPerStore': 'ReportController.itemPerStore',
+  'GET /api/v1/report/:storeId/stockPerStore': 'ReportController.stockPerStore',
+
   //  ╦ ╦╔═╗╔╗ ╦ ╦╔═╗╔═╗╦╔═╔═╗
   //  ║║║║╣ ╠╩╗╠═╣║ ║║ ║╠╩╗╚═╗
   //  ╚╩╝╚═╝╚═╝╩ ╩╚═╝╚═╝╩ ╩╚═╝
