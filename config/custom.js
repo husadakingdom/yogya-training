@@ -19,6 +19,8 @@ module.exports.custom = {
   // mailgunSecret: 'key-testkeyb183848139913858e8abd9a3',
   // stripeSecret: 'sk_test_Zzd814nldl91104qor5911gjald',
   // …
+  frontendUrl: process.env.FRONTEND_URL,
+
   token: {
     secret: 'Y0gy@',
     expires: 86400 // 1 day
@@ -44,6 +46,11 @@ module.exports.custom = {
 
     category: {
       notFound: 'Category not found',
+    },
+
+    item: {
+      fileNotFound: 'You must upload 1 file',
+      invalidCategory: 'The category ID is invalid'
     }
   }
 

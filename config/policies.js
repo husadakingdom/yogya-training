@@ -27,5 +27,7 @@ module.exports.policies = {
 
   'store/*': ['requestLog', 'isAuthorized', 'isAdmin'],
 
-  'category/*': ['requestLog', 'isAuthorized', 'isAdmin']
+  'category/*': ['requestLog', 'isAuthorized', 'isAdmin'],
+
+  'item/*': ['requestLog', 'isAuthorized', 'isAdmin']  
 };
