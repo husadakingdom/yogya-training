@@ -50,7 +50,8 @@ module.exports.custom = {
 
     item: {
       fileNotFound: 'You must upload 1 file',
-      invalidCategory: 'The category ID is invalid'
+      invalidCategory: 'The category ID is invalid',
+      notFound: 'Item not found'
     }
   }
 

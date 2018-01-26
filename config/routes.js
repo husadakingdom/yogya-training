@@ -47,7 +47,8 @@ module.exports.routes = {
   'PATCH /api/v1/category/:id': 'CategoryController.update',
   'DELETE /api/v1/category/:id': 'CategoryController.delete',
 
-  'POST /api/v1/item': 'ItemController.create'
+  'POST /api/v1/item': 'ItemController.create',
+  'PATCH /api/v1/item/:id': 'ItemController.update',
 
 
   //  ╦ ╦╔═╗╔╗ ╦ ╦╔═╗╔═╗╦╔═╔═╗
