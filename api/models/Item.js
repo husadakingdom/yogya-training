@@ -22,10 +22,6 @@ module.exports = {
       type: 'number',
       defaultsTo: 0
     },
-    stock: {
-      type: 'number',
-      defaultsTo: 0
-    },
     isActive: {
       type: 'boolean',
       defaultsTo: true
