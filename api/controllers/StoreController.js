@@ -61,7 +61,7 @@ module.exports = {
 
   update: async(req, res) => {
     try {
-      const stores = await Store.update({ id: req.params.id }, { 
+      const stores = await Store.update({ id: req.params.id }, {
         name: req.param('name' ),
         address: req.param('address')
       }).fetch();

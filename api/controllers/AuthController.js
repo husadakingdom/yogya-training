@@ -38,7 +38,7 @@ module.exports = {
       if (err.exit === 'userNotFound') {
         res.apiError(401, errMsg.userNotFound);
       } else if (err.exit ==='invalidPassword') {
-        res.apiError(401, errMsg.invalidPassword);      
+        res.apiError(401, errMsg.invalidPassword);
       } else {
         res.apiError(500, err);
       }
