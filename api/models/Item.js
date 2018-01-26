@@ -29,6 +29,15 @@ module.exports = {
     imageUrl: {
       type: 'string',
       required: true
+    },
+    transactions: {
+      collection: 'Transaction',
+      via: 'items'
+    },
+    stores: {
+      collection: 'Store',
+      via: 'item',
+      through: 'StoreItem'
     }
   }
 };

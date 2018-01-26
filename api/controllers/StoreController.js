@@ -5,6 +5,8 @@
  * @help        :: See http://sailsjs.org/#!/documentation/concepts/Controllers
  */
 
+const errMsg = sails.config.custom.errorMessage.store;
+
 module.exports = {
   create: async(req, res) => {
     try {
@@ -50,7 +52,7 @@ module.exports = {
       const store = await Store.findOne(req.params.id);
 
       if (!store) {
-        return res.apiError(400, sails.config.custom.errorMessage.store.notFound);
+        return res.apiError(400, errMsg.notFound);
       }
 
       return res.apiSuccess({ store });
@@ -78,12 +80,81 @@ module.exports = {
     try {
       const store = await Store.findOne(req.params.id);
       if (!store) {
-        return res.apiError(400, sails.config.custom.errorMessage.store.notFound);
+        return res.apiError(400, errMsg.notFound);
       }
 
       await Store.destroy(req.params.id);
 
       return res.apiSuccess({ message: 'Store deleted' });
+    } catch (err) {
+      return res.apiError(500, err);
+    }
+  },
+
+  addItems: async(req, res) => {
+    try {
+      const store = await Store.findOne(req.params.id);
+
+      if (!store) {
+        return res.apiError(400, errMsg.notFound);
+      }
+
+      let items = req.param('items');
+      if (!_.isArray(items)) {
+        items = [items];
+      }
+
+      await Store.addToCollection(store.id, 'items').members(req.param('items'));
+
+      const populatedStore = await Store.findOne(store.id).populate('items');
+
+      return res.apiSuccess({ store: populatedStore });
+    } catch (err) {
+      return res.apiError(500, err);
+    }
+  },
+
+  removeItems: async(req, res) => {
+    try {
+      const store = await Store.findOne(req.params.id);
+
+      if (!store) {
+        return res.apiError(400, errMsg.notFound);
+      }
+
+      let items = req.param('items');
+      if (!_.isArray(items)) {
+        items = [items];
+      }
+
+      await Store.removeFromCollection(store.id, 'items').members(req.param('items'));
+
+      const populatedStore = await Store.findOne(store.id).populate('items');
+
+      return res.apiSuccess({ store: populatedStore });
+    } catch (err) {
+      return res.apiError(500, err);
+    }
+  },
+
+  replaceItems: async(req, res) => {
+    try {
+      const store = await Store.findOne(req.params.id);
+
+      if (!store) {
+        return res.apiError(400, errMsg.notFound);
+      }
+
+      let items = req.param('items');
+      if (!_.isArray(items)) {
+        items = [items];
+      }
+
+      await Store.replaceCollection(store.id, 'items').members(req.param('items'));
+
+      const populatedStore = await Store.findOne(store.id).populate('items');
+
+      return res.apiSuccess({ store: populatedStore });
     } catch (err) {
       return res.apiError(500, err);
     }

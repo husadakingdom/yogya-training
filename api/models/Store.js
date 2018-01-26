@@ -21,6 +21,12 @@ module.exports = {
     transactions: {
       collection: 'Transaction',
       via: 'store'
+    },
+
+    items: {
+      collection: 'Item',
+      via: 'store',
+      through: 'StoreItem'
     }
   },
 

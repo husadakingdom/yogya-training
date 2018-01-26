@@ -23,6 +23,10 @@ module.exports = {
     },
     user: {
       model: 'User'
+    },
+    items: {
+      collection: 'Item',
+      via: 'transactions'
     }
   }
 };
