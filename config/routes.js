@@ -44,6 +44,7 @@ module.exports.routes = {
   'POST /api/v1/store/:id/items': 'StoreController.addItems',
   'DELETE /api/v1/store/:id/items': 'StoreController.removeItems',
   'PUT /api/v1/store/:id/items': 'StoreController.replaceItems',
+  'POST /api/v1/store/:id/itemsStock': 'StoreController.stockItems',
 
   'POST /api/v1/category': 'CategoryController.create',
   'GET /api/v1/categories': 'CategoryController.index',

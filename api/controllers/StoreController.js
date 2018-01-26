@@ -158,6 +158,39 @@ module.exports = {
     } catch (err) {
       return res.apiError(500, err);
     }
+  },
+
+  stockItems: async (req, res) => {    
+    try {
+      const store = await Store.findOne(req.params.id);
+
+      if (!store) {
+        return res.apiError(400, errMsg.notFound);
+      }
+
+      const updateStock = async (input) => {
+        const item = await Item.findOne(input.id);
+
+        if (item) {
+          const storeItem = await StoreItem.findOrCreate(
+            { store: store.id, item: item.id },
+            { store: store.id, item: item.id }
+          );
+
+          await StoreItem.update(storeItem.id, { stock: input.stock });
+        }
+      };
+
+      await Promise.all(req.param('items').map(input => updateStock(input)));
+
+      // if directly using populate, the stock data won't be included
+      const storeItems = await StoreItem.find({ store: store.id }).populate('item');
+      store.items = storeItems;
+
+      return res.apiSuccess({ store });
+    } catch (err) {
+      return res.apiError(500, err);
+    }
   }
 };
 
