@@ -1,5 +1,5 @@
 /**
- * Store.js
+ * Transaction.js
  *
  * @description :: TODO: You might write a short summary of how this model works and what it represents here.
  * @docs        :: http://sailsjs.org/documentation/concepts/models-and-orm/models
@@ -8,24 +8,22 @@
 module.exports = {
 
   attributes: {
-    name: {
+    paymentRef: {
       type: 'string',
       required: true,
       unique: true
     },
-
-    address: {
-      type: 'string'
+    status: {
+      type: 'string',
+      isIn: ['PENDING', 'FAILED', 'SUCCESS'],
+      defaultsTo: 'PENDING'
     },
-
-    transactions: {
-      collection: 'Transaction',
-      via: 'store'
+    store: {
+      model: 'Store'
+    },
+    user: {
+      model: 'User'
     }
-  },
-
-  customToJSON: function() {
-    return _.omit(this, ['createdAt','updatedAt']);
   }
 };
 
