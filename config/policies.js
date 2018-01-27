@@ -17,6 +17,25 @@ module.exports.policies = {
   *                                                                          *
   ***************************************************************************/
 
-  // '*': true,
+  '*': false,
+  'auth/login': 'requestLog',
+  'auth/logout': ['requestLog', 'isAuthorized'],
 
+  'user/*': ['requestLog', 'isAuthorized'],
+  'user/create': ['requestLog', 'isAuthorized', 'isAdmin'],
+  'user/delete': ['requestLog', 'isAuthorized', 'isAdmin'],
+
+  'store/*': ['requestLog', 'isAuthorized', 'isAdmin'],
+
+  'category/*': ['requestLog', 'isAuthorized', 'isAdmin'],
+  'category/index': 'requestLog',
+
+  'item/*': ['requestLog', 'isAuthorized', 'isAdmin'],
+  'item/index': 'requestLog',
+  'item/indexCategory': 'requestLog',
+  'item/view': 'requestLog',
+
+  'transaction/*': ['requestLog', 'isAuthorized'],
+
+  'report/*': ['requestLog', 'isAuthorized', 'isAdmin']
 };
